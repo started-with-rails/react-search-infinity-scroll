@@ -10,9 +10,11 @@ class SearchItem extends React.Component {
         this.ImageRef.current.addEventListener('load', this.setSpan);
     }
     setSpan = () => {
-        const height = this.ImageRef.current.clientHeight
-        const spans  = Math.ceil(height/10);
-        this.setState({spans: spans})
+        if(this.ImageRef.current){
+            const height = this.ImageRef.current.clientHeight
+            const spans  = Math.ceil(height/10);
+            this.setState({spans: spans})
+        }
     }
     render(){
         const {urls, description} = this.props.image

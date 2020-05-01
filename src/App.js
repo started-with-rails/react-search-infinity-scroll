@@ -13,15 +13,18 @@ class App extends React.Component {
         page: this.state.page
       } 
     })
+    console.log(this.state.scrolling);
     this.setState({
-      results: [...this.state.results, ...response.data.results],
+      results: this.state.scrolling ? [...this.state.results, ...response.data.results] : response.data.results,
       total_pages: response.total_pages,
-      term: term
+      term: term,
+      scrolling: false
     })
   }
 
   loadMore = () => {
     const {term} = this.state
+    console.log('fcuk')
     this.setState(
       prevState => ({
         page: prevState.page + 1,
@@ -36,7 +39,7 @@ class App extends React.Component {
     var lastLi = document.querySelector("div.image-list > img:last-child");
     var lastLiOffset = lastLi.offsetTop + lastLi.clientHeight;
     var pageOffset = window.pageYOffset + window.innerHeight;
-    if (pageOffset+100 > lastLiOffset) {
+    if (pageOffset > lastLiOffset+50) {
          this.loadMore();
     }
   };
