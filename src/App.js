@@ -31,6 +31,7 @@ class App extends React.Component {
     );
   };
 
+  
   handleScroll = () => { 
     var lastLi = document.querySelector("div.image-list > img:last-child");
     var lastLiOffset = lastLi.offsetTop + lastLi.clientHeight;
